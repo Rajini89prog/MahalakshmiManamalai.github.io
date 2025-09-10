@@ -1,312 +1,242 @@
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-  <meta charset="UTF-8">
-  <style>
+<meta charset="UTF-8">
+<title>ஜாதக விவரங்கள்</title>
+<style>
+  body {
+    font-family: 'Latha', 'Nirmala UI', sans-serif;
+    font-size: 13px;
+    background-color: #fff8f0;
+    margin: 0;
+    padding: 0;
+  }
+  .page {
+    border: 3px solid #000080;
+    margin: 10px;
+    padding: 10px;
+    background: #fffdf9;
+    min-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .header {
+    text-align: center;
+    margin: 5px 0 8px 0;
+    color: #000080;
+    position: relative;
+  }
+  .header img {
+    position: absolute;
+    top: 0;   /* fits nicely within header */
+    left: 0;
+    width: 80px;
+    height: auto;
+  }
+  h1 {
+    margin: 2px;
+    font-size: 20px;
+  }
+  h2 {
+    margin: 2px;
+    font-size: 15px;
+  }
+  p {
+    margin: 2px;
+    font-size: 13px;
+  }
+  .separator {
+    border-top: 2px solid #000080;
+    margin: 10px 0;
+  }
+  .sub-header {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000080;
+    margin-bottom: 8px;
+  }
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    flex-grow: 1;
+    gap: 10px;
+  }
+  .form-section {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  }
+  .form-table {
+    flex-grow: 1;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13px;
+  }
+  td {
+    border: 1px solid #000080;
+    padding: 4px 6px;
+    vertical-align: middle;
+  }
+  input, textarea {
+    width: 95%;
+    border: none;
+    font-size: 13px;
+    background: transparent;
+    outline: none;
+  }
+  textarea { resize: vertical; }
+  .side-section {
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .chart-wrapper {
+    width: 100%;
+    flex: 1;
+    margin-bottom: 10px;
+  }
+  .chart-title {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #000080;
+  }
+  .chart {
+    border: 2px solid #000080;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+  .chart div {
+    border: 1px solid #000080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .chart div input {
+    width: 90%;
+    border: none;
+    text-align: center;
+    font-size: 13px;
+    background: transparent;
+    outline: none;
+  }
+  .footer {
+    text-align: center;
+    font-size: 13px;
+    margin: 6px 0;
+    padding-top: 5px;
+    border-top: 2px solid #000080;
+    color: #333;
+  }
+  .print-btn {
+    display: block;
+    margin: 10px auto 0 auto;
+    padding: 6px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #000080;
+    color: #fff;
+  }
+  .print-btn:hover {
+    background: #333366;
+  }
+  @page {
+    size: A4;
+    margin: 8mm;
+  }
+  @media print {
+    .print-btn { display: none; }
     body {
-      font-family: "Latha", "Arial Unicode MS", Arial, sans-serif;
-      margin: 0;
-      padding: 10px;
-      background: #fffaf3; /* pleasant light cream */
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
     }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 12px;
-      background: #fffdf8;
-      border: 2px solid #000080;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    .header {
-      text-align: center;
-      border-bottom: 2px solid #000080;
-      padding-bottom: 6px;
-      margin-bottom: 8px;
-    }
-    .header table {
-      width: 100%;
-      border: none;
-    }
-    .header img {
-      width: 80px;
-      height: auto;
-    }
-    .header h1 {
-      font-size: 18px;
-      margin: 0;
-      color: #000080;
-    }
-    .header h2 {
-      font-size: 14px;
-      margin: 2px 0;
-      color: #000080;
-    }
-    .header p {
-      margin: 2px 0;
-      font-size: 12px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 10px;
-      font-size: 12px;
-    }
-    td {
-      border: 1px solid #000080;
-      padding: 2px 4px;
-    }
-    input, textarea {
-      width: 95%;
-      border: none;
-      background: transparent;
-      font-size: 12px;
-    }
-    .photo-box {
-      width: 90px;
-      height: 115px;
-      border: 2px dashed #000080;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .photo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: none;
-    }
-    .photo-box input[type="file"] {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      opacity: 0.9;
-      cursor: pointer;
-    }
-    .charts-row {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 8px;
-      gap: 12px;
-    }
-    .chart-box {
-      flex: 1;
-      text-align: center;
-    }
-    .chart-title {
-      margin-bottom: 2px;
-      font-weight: bold;
-      font-size: 13px;
-      color: #000080;
-    }
-    .chart {
-      display: grid;
-      grid-template-columns: repeat(4, 38px);
-      grid-template-rows: repeat(4, 38px);
-      gap: 1px;
-      justify-content: center;
-      margin: 0 auto;
-    }
-    .chart-cell {
-      border: 1px solid #000080;
-      text-align: center;
-      font-size: 10px;
-      line-height: 38px;
-    }
-    .chart-empty {
-      border: none !important;
-      background: transparent !important;
-    }
-    .footer {
-      margin-top: auto;
-      text-align: center;
-      font-size: 12px;
-      padding-top: 6px;
-      border-top: 2px solid #000080;
-      color: #333;
-    }
-    .print-btn {
-      display: block;
-      margin: 12px auto 5px auto;
-      padding: 6px 14px;
-      background: #000080;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 13px;
-      cursor: pointer;
-    }
-    .print-btn:hover {
-      background: #333366;
-    }
-    @page {
-    size: auto;   /* auto is the initial value */
-    margin: 0;  /* this affects the margin in the printer settings */
-}
-    @media print {
-      
-      body {
-        background: #fffaf3 !important; /* keep cream background */
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-      .container {
-        border: 1px solid #000;
-        margin: 0;
-        max-width: 100%;
-        page-break-inside: avoid;
-      }
-      input, textarea {
-        border: none;
-        outline: none;
-      }
-      .photo-box input[type="file"],
-      .print-btn {
-        display: none !important;
-      }
-      .photo-box img {
-        display: block !important;
-      }
-    }
-  </style>
+    .page { margin: 0; border: 2px solid #000; }
+  }
+</style>
 </head>
 <body>
+
+<div class="page">
+  <div class="header">
+    <img src="https://i.pinimg.com/736x/8d/84/b9/8d84b911d07e1f958db5c948b30001c5.jpg" style="width:70px;" alt="Mahalakshmi">
+    <h1>ஸ்ரீ மகாலட்சுமி மணமகிழ் மணமாலை</h1>
+    <h2>திரு. கந்தசாமி, சின்னியம்பாளையம், கோயம்புத்தூர்</h2>
+    <p>செல்: +91 95008 90278</p>
+  </div>
+
+  <div class="separator"></div>
+  <div class="sub-header">பதிவு விண்ணப்பம்</div>
+
   <div class="container">
-    <!-- Header -->
-    <div class="header">
-      <table>
-        <tr>
-          <td style="width:80px;">
-            <img src="https://i.pinimg.com/736x/8d/84/b9/8d84b911d07e1f958db5c948b30001c5.jpg" alt="mahalakshmi">
-          </td>
-          <td style="text-align:center;">
-            <h1>ஸ்ரீ மகாலட்சுமி மணமகிழ் மணமாலை</h1>
-            <h2>திரு. கந்தசாமி, சின்னியம்பாளையம், கோயம்புத்தூர்</h2>
-            <p>செல்: +91 95008 90278</p>
-          </td>
-        </tr>
+    <!-- Form Section -->
+    <div class="form-section">
+      <table class="form-table">
+		<tr><td>பதிவு எண்</td><td><input type="text"></td></tr>
+        <tr><td>பெயர்</td><td><input type="text"></td></tr>
+        <tr><td>பாலினம்</td><td><input type="text"></td></tr>
+        <tr><td>தந்தை பெயர்</td><td><input type="text"></td></tr>
+        <tr><td>தாயார் பெயர்</td><td><input type="text"></td></tr>
+        <tr><td>பிறந்த தேதி</td><td><input type="text"></td></tr>
+		<tr><td>பிறந்த நேரம்</td><td><input type="text"></td></tr>
+        <tr><td>குலம்</td><td><input type="text"></td></tr>
+        <tr><td>ராசி</td><td><input type="text"></td></tr>
+        <tr><td>தோஷம்</td><td><input type="text"></td></tr>
+        <tr><td>லக்னம்</td><td><input type="text"></td></tr>      
+        <tr><td>நட்சத்திரம்</td><td><input type="text"></td></tr>
+        <tr><td>ராகு/கேது</td><td><input type="text"></td></tr>
+        <tr><td>ஜாதக இடம்</td><td><input type="text"></td></tr>
+        <tr><td>கல்வி</td><td><input type="text"></td></tr>
+        <tr><td>வேலை / தொழில்</td><td><input type="text"></td></tr>
+        <tr><td>மாத வருமானம்</td><td><input type="text"></td></tr>
+        <tr><td>உடன்பிறந்தவர்கள்</td><td><input type="text"></td></tr>
+        <tr><td>வசிப்பிடம்</td><td><input type="text"></td></tr>
+        <tr><td>தொலைபேசி எண்</td><td><input type="text"></td></tr>
+        <tr><td>முகவரி</td><td><textarea rows="2"></textarea></td></tr>
+        <tr><td>குறிப்பு</td><td><textarea rows="3"></textarea></td></tr>
       </table>
     </div>
 
-    <!-- Form -->
-    <table>
-      <tr>
-        <td>பெயர்</td>
-        <td><input type="text"></td>
-        <td rowspan="5" class="photo-box">
-          <img id="photoPreview" alt="புகைப்படம்">
-          <input type="file" accept="image/*" onchange="previewPhoto(event)">
-        </td>
-      </tr>
-      <tr>
-        <td>பாலினம்</td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td>பிறந்த தேதி</td>
-        <td><input type="date"></td>
-      </tr>
-      <tr>
-        <td>பிறந்த நேரம்</td>
-        <td><input type="time"></td>
-      </tr>
-      <tr>
-        <td>பிறந்த இடம்</td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td>குலம்</td>
-        <td colspan="2"><input type="text"></td>
-      </tr>
-      <tr>
-        <td>ராசி</td>
-        <td colspan="2"><input type="text"></td>
-      </tr>
-      <tr>
-        <td>நட்சத்திரம்</td>
-        <td colspan="2"><input type="text"></td>
-      </tr>
-      <tr>
-        <td>கல்வி</td>
-        <td colspan="2"><input type="text"></td>
-      </tr>
-      <tr>
-        <td>வேலை</td>
-        <td colspan="2"><input type="text"></td>
-      </tr>
-      <tr>
-        <td>சம்பளம்</td>
-        <td colspan="2"><input type="text"></td>
-      </tr>
-      <tr>
-        <td>உயரம்</td>
-        <td colspan="2"><input type="text"></td>
-      </tr>
-      <tr>
-        <td>எடை</td>
-        <td colspan="2"><input type="text"></td>
-      </tr>
-      <tr>
-        <td>முகவரி</td>
-        <td colspan="2"><textarea rows="3"></textarea></td>
-      </tr>
-      <tr>
-        <td>தொடர்பு எண்</td>
-        <td colspan="2"><input type="text"></td>
-      </tr>
-    </table>
-
-    <!-- Charts -->
-    <div class="charts-row">
-      <div class="chart-box">
+    <!-- Horoscope Section -->
+    <div class="side-section">
+      <div class="chart-wrapper">
         <div class="chart-title">ராசி</div>
         <div class="chart">
-          <div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div>
-          <div class="chart-cell"></div><div class="chart-empty"></div><div class="chart-empty"></div><div class="chart-cell"></div>
-          <div class="chart-cell"></div><div class="chart-empty"></div><div class="chart-empty"></div><div class="chart-cell"></div>
-          <div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div>
+          <div><input></div><div><input></div><div><input></div>
+          <div><input></div><div><input></div><div><input></div>
+          <div><input></div><div><input></div><div><input></div>
         </div>
       </div>
-      <div class="chart-box">
+      <div class="chart-wrapper">
         <div class="chart-title">நவாம்சம்</div>
         <div class="chart">
-          <div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div>
-          <div class="chart-cell"></div><div class="chart-empty"></div><div class="chart-empty"></div><div class="chart-cell"></div>
-          <div class="chart-cell"></div><div class="chart-empty"></div><div class="chart-empty"></div><div class="chart-cell"></div>
-          <div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div>
+          <div><input></div><div><input></div><div><input></div>
+          <div><input></div><div><input></div><div><input></div>
+          <div><input></div><div><input></div><div><input></div>
         </div>
       </div>
     </div>
-
-    <!-- Footer
-    <div class="footer">
-      பதிவு கட்டணம்: ரூ.1000 (6 மாதத்திற்கே மட்டும்) பின்னர் புதுப்பிக்கவும்
-    </div> -->
-
-    <button class="print-btn" onclick="window.print()">PDF ஆக அச்சிடு</button>
   </div>
 
-  <script>
-    function previewPhoto(event) {
-      const file = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = function() {
-        const img = document.getElementById('photoPreview');
-        img.src = reader.result;
-        img.style.display = 'block';
-      }
-      if (file) {
-        reader.readAsDataURL(file);
-      }
-    }
-  </script>
+  <div class="footer">
+    பதிவு கட்டணம்: ரூ.1000 (6 மாதத்திற்கே மட்டும்) பின்னர் புதுப்பிக்கவும்
+  </div>
+
+  <button class="print-btn" onclick="window.print()">🖨️ PDF அச்சிடு</button>
+</div>
+
 </body>
 </html>
-
-
-
-
-
-
