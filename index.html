@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <title>ஸ்ரீ மகாலட்சுமி மணமக்கள் மணமாலை</title>
+  <style>
+    body {
+      font-family: "Latha", "Arial Unicode MS", Arial, sans-serif;
+      margin: 0;
+      padding: 10px;
+      background: #fffaf3; /* pleasant light cream */
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 12px;
+      background: #fffdf8;
+      border: 2px solid #000080;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #000080;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+    .header table {
+      width: 100%;
+      border: none;
+    }
+    .header img {
+      width: 80px;
+      height: auto;
+    }
+    .header h1 {
+      font-size: 18px;
+      margin: 0;
+      color: #000080;
+    }
+    .header h2 {
+      font-size: 14px;
+      margin: 2px 0;
+      color: #000080;
+    }
+    .header p {
+      margin: 2px 0;
+      font-size: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+    td {
+      border: 1px solid #000080;
+      padding: 2px 4px;
+    }
+    input, textarea {
+      width: 95%;
+      border: none;
+      background: transparent;
+      font-size: 12px;
+    }
+    .photo-box {
+      width: 90px;
+      height: 115px;
+      border: 2px dashed #000080;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .photo-box input[type="file"] {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0.9;
+      cursor: pointer;
+    }
+    .charts-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      gap: 12px;
+    }
+    .chart-box {
+      flex: 1;
+      text-align: center;
+    }
+    .chart-title {
+      margin-bottom: 2px;
+      font-weight: bold;
+      font-size: 13px;
+      color: #000080;
+    }
+    .chart {
+      display: grid;
+      grid-template-columns: repeat(4, 38px);
+      grid-template-rows: repeat(4, 38px);
+      gap: 1px;
+      justify-content: center;
+      margin: 0 auto;
+    }
+    .chart-cell {
+      border: 1px solid #000080;
+      text-align: center;
+      font-size: 10px;
+      line-height: 38px;
+    }
+    .chart-empty {
+      border: none !important;
+      background: transparent !important;
+    }
+    .footer {
+      margin-top: auto;
+      text-align: center;
+      font-size: 12px;
+      padding-top: 6px;
+      border-top: 2px solid #000080;
+      color: #333;
+    }
+    .print-btn {
+      display: block;
+      margin: 12px auto 5px auto;
+      padding: 6px 14px;
+      background: #000080;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .print-btn:hover {
+      background: #333366;
+    }
+    @media print {
+      body {
+        background: #fffaf3 !important; /* keep cream background */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .container {
+        border: 1px solid #000;
+        margin: 0;
+        max-width: 100%;
+        page-break-inside: avoid;
+      }
+      input, textarea {
+        border: none;
+        outline: none;
+      }
+      .photo-box input[type="file"],
+      .print-btn {
+        display: none !important;
+      }
+      .photo-box img {
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <table>
+        <tr>
+          <td style="width:80px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Mahalakshmi_Devi_Golden.jpg" alt="Mahalakshmi">
+          </td>
+          <td style="text-align:center;">
+            <h1>ஸ்ரீ மகாலட்சுமி மணமக்கள் மணமாலை</h1>
+            <h2>திரு. கந்தசாமி, சின்னியம்பாளையம், கோயம்புத்தூர்</h2>
+            <p>செல்: +91 95008 90278</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Form -->
+    <table>
+      <tr>
+        <td>பெயர்</td>
+        <td><input type="text"></td>
+        <td rowspan="5" class="photo-box">
+          <img id="photoPreview" alt="புகைப்படம்">
+          <input type="file" accept="image/*" onchange="previewPhoto(event)">
+        </td>
+      </tr>
+      <tr>
+        <td>பாலினம்</td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td>பிறந்த தேதி</td>
+        <td><input type="date"></td>
+      </tr>
+      <tr>
+        <td>பிறந்த நேரம்</td>
+        <td><input type="time"></td>
+      </tr>
+      <tr>
+        <td>பிறந்த இடம்</td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td>குலம்</td>
+        <td colspan="2"><input type="text"></td>
+      </tr>
+      <tr>
+        <td>ராசி</td>
+        <td colspan="2"><input type="text"></td>
+      </tr>
+      <tr>
+        <td>நட்சத்திரம்</td>
+        <td colspan="2"><input type="text"></td>
+      </tr>
+      <tr>
+        <td>கல்வி</td>
+        <td colspan="2"><input type="text"></td>
+      </tr>
+      <tr>
+        <td>வேலை</td>
+        <td colspan="2"><input type="text"></td>
+      </tr>
+      <tr>
+        <td>சம்பளம்</td>
+        <td colspan="2"><input type="text"></td>
+      </tr>
+      <tr>
+        <td>உயரம்</td>
+        <td colspan="2"><input type="text"></td>
+      </tr>
+      <tr>
+        <td>எடை</td>
+        <td colspan="2"><input type="text"></td>
+      </tr>
+      <tr>
+        <td>முகவரி</td>
+        <td colspan="2"><textarea rows="3"></textarea></td>
+      </tr>
+      <tr>
+        <td>தொடர்பு எண்</td>
+        <td colspan="2"><input type="text"></td>
+      </tr>
+    </table>
+
+    <!-- Charts -->
+    <div class="charts-row">
+      <div class="chart-box">
+        <div class="chart-title">ராசி</div>
+        <div class="chart">
+          <div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div>
+          <div class="chart-cell"></div><div class="chart-empty"></div><div class="chart-empty"></div><div class="chart-cell"></div>
+          <div class="chart-cell"></div><div class="chart-empty"></div><div class="chart-empty"></div><div class="chart-cell"></div>
+          <div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div>
+        </div>
+      </div>
+      <div class="chart-box">
+        <div class="chart-title">நவாம்சம்</div>
+        <div class="chart">
+          <div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div>
+          <div class="chart-cell"></div><div class="chart-empty"></div><div class="chart-empty"></div><div class="chart-cell"></div>
+          <div class="chart-cell"></div><div class="chart-empty"></div><div class="chart-empty"></div><div class="chart-cell"></div>
+          <div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div><div class="chart-cell"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      பதிவு கட்டணம்: ரூ.1000 (6 மாதத்திற்கே மட்டும்) பின்னர் புதுப்பிக்கவும்
+    </div>
+
+    <button class="print-btn" onclick="window.print()">PDF ஆக அச்சிடு</button>
+  </div>
+
+  <script>
+    function previewPhoto(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function() {
+        const img = document.getElementById('photoPreview');
+        img.src = reader.result;
+        img.style.display = 'block';
+      }
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+</body>
+</html>
