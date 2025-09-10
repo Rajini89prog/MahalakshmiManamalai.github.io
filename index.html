@@ -141,10 +141,12 @@
     .print-btn:hover {
       background: #333366;
     }
+    @page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+}
     @media print {
-       a:link:after,a:visited:after {
-    content: none !important; /* This removes the content that might display the URL after links */
-  }
+      
       body {
         background: #fffaf3 !important; /* keep cream background */
         -webkit-print-color-adjust: exact;
@@ -302,6 +304,7 @@
   </script>
 </body>
 </html>
+
 
 
 
