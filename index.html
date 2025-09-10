@@ -142,6 +142,9 @@
       background: #333366;
     }
     @media print {
+       a:link:after,a:visited:after {
+    content: none !important; /* This removes the content that might display the URL after links */
+  }
       body {
         background: #fffaf3 !important; /* keep cream background */
         -webkit-print-color-adjust: exact;
@@ -299,6 +302,7 @@
   </script>
 </body>
 </html>
+
 
 
 
