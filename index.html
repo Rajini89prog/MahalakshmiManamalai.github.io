@@ -6,7 +6,7 @@
 <style>
   body {
     font-family: 'Latha', 'Nirmala UI', sans-serif;
-    font-size: 16px; /* Bigger overall */
+    font-size: 16px;
     background-color: #fff8f0;
     margin: 0;
     padding: 0;
@@ -27,104 +27,42 @@
     margin: 5px 0 8px 0;
     color: #000080;
     position: relative;
-	border-bottom: 3px solid #000080;
-	padding: 10px;
-	background: linear-gradient(90deg, #ffefd5, #ffe4b5); /* light saffron gradient */
-	color: #000080;
-	font-size: 20px;
-	font-weight: bold;
+    border-bottom: 3px solid #000080;
+    padding: 10px;
+    background: linear-gradient(90deg, #ffefd5, #ffe4b5);
+    font-size: 20px;
+    font-weight: bold;
   }
-  .header img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 80px;
-    height: auto;
-  }
+  .header img { position: absolute; top: 0; left: 0; width: 80px; height: auto; }
   h1 { margin: 2px; font-size: 22px; }
   h2 { margin: 2px; font-size: 17px; }
   p { margin: 2px; font-size: 15px; }
   .separator { border-top: 2px solid #000080; margin: 10px 0; }
   .sub-header {
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: #000080;
-    margin-bottom: 8px;
+    text-align: center; font-size: 18px; font-weight: bold;
+    color: #000080; margin-bottom: 8px;
   }
+  .top-fields { margin-bottom: 10px; }
+  .top-fields table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+  .top-fields td { border: 1px solid #000080; padding: 4px 6px; white-space: nowrap; font-weight: bold; }
+  .top-fields input { width: 100%; border: none; background: transparent; outline: none; font-size: 16px; }
 
-  /* Top fields row */
-  .top-fields {
-    margin-bottom: 10px;
-  }
-  .top-fields table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 10px;
-  }
-  .top-fields td {
-    border: 1px solid #000080;
-    padding: 4px 6px;
-    min-width: 100px;       /* give more room */
-    white-space: nowrap;    /* keep label in one line */
-    font-weight: bold;      /* make labels clearer */
-  }
-  .top-fields input {
-    width: 100%;
-    border: none;
-    background: transparent;
-    outline: none;
-    font-size: 16px;
-  }
-
-  .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    flex-grow: 1;
-    gap: 10px;
-  }
+  .container { display: flex; flex-direction: row; justify-content: space-between; width: 100%; flex-grow: 1; gap: 10px; }
   .form-section { width: 70%; display: flex; flex-direction: column; }
   .form-table { flex-grow: 1; }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 16px;
-  }
-  td {
-    border: 1px solid #000080;
-    padding: 6px 8px;
-    vertical-align: middle;
-    font-weight: bold;
-    color: #000;
-  }
-  input, textarea {
-    width: 95%;
-    border: none;
-    font-size: 16px;
-    background: transparent;
-    outline: none;
-    font-weight: normal;
-    color: #000;
-  }
+  table { border-collapse: collapse; width: 100%; font-size: 16px; }
+  td { border: 1px solid #000080; padding: 6px 8px; vertical-align: middle; font-weight: bold; color: #000; }
+  input, textarea { width: 90%; border: none; font-size: 16px; background: transparent; outline: none; font-weight: normal; color: #000; }
   textarea { resize: vertical; }
-  .side-section {
-    width: 28%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .chart-wrapper { width: 100%; flex: 1; margin-bottom: 10px; }
 
-  /* Horoscope chart */
+  .side-section { width: 28%; display: flex; flex-direction: column; justify-content: space-between; }
+  .chart-wrapper { width: 100%; flex: 1; margin-bottom: 10px; }
   .chart {
     border: 2px solid #000080;
-	background-color: #fff4e0; /* light saffron */
+    background-color: #fff4e0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    width: 100%;
     aspect-ratio: 1 / 1;
     gap: 2px;
     grid-template-areas:
@@ -133,66 +71,43 @@
       "k center center f"
       "j i h g";
   }
-  .cell {
-    border: 1px solid #000080;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-  }
-  .cell input {
-    width: 90%;
-    border: none;
-    text-align: center;
-    font-size: 16px;
-    background: transparent;
-    outline: none;
-  }
+  .cell { border: 1px solid #000080; display: flex; align-items: center; justify-content: center; padding: 4px; }
+  .cell input { width: 70%; border: none; text-align: center; font-size: 16px; background: transparent; outline: none; }
   .center {
-    grid-area: center;
-    border: 2px solid #000080;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 18px;
-    color: #000080;
-    padding: 6px;
-    text-align: center;
+    grid-area: center; border: 2px solid #000080; display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 18px; color: #000080; padding: 6px; text-align: center;
   }
-  .footer {
-    text-align: center;
-    font-size: 15px;
-    margin: 6px 0;
-    padding-top: 5px;
-    border-top: 2px solid #000080;
-    color: #333;
-  }
+  .footer { text-align: center; font-size: 15px; margin: 6px 0; padding-top: 5px; border-top: 2px solid #000080; color: #333; }
   .print-btn {
-    display: block;
-    margin: 10px auto 0 auto;
-    padding: 8px 16px;
-    font-size: 16px;
-    cursor: pointer;
-    border: 1px solid #444;
-    border-radius: 4px;
-    background: #000080;
-    color: #fff;
+    display: block; margin: 10px auto 0 auto; padding: 8px 16px; font-size: 16px;
+    cursor: pointer; border: 1px solid #444; border-radius: 4px; background: #000080; color: #fff;
   }
   .print-btn:hover { background: #333366; }
   @page { size: A4; margin: 8mm; }
   @media print {
+  .voice-btn { display: none !important; }  /* hide mic buttons */
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { margin: 0; border: 2px solid #000; }
     .print-btn { display: none; }
     body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .page { margin: 0; border: 2px solid #000; }
   }
+  .voice-btn {
+    margin-left: 4px; cursor: pointer; background: #000080; color: #fff;
+    border: none; border-radius: 50%; width: 26px; height: 26px; text-align: center; font-size: 14px;flex-shrink: 0; /* prevent shrinking */
+  }
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* space between input and mic */
+}
 </style>
 </head>
 <body>
 
 <div class="page">
   <div class="header">
-    <img src="https://i.pinimg.com/736x/8d/84/b9/8d84b911d07e1f958db5c948b30001c5.jpg" style="width:70px;" alt="Mahalakshmi">
+    <img src="https://i.pinimg.com/736x/8d/84/b9/8d84b911d07e1f958db5c948b30001c5.jpg" alt="Mahalakshmi">
     <h1>ஸ்ரீ மகாலட்சுமி மணமகிழ் மணமாலை</h1>
     <h2>திரு. கந்தசாமி, சின்னியம்பாளையம், கோயம்புத்தூர்</h2>
     <p>செல்: +91 95008 90278</p>
@@ -201,87 +116,124 @@
   <div class="separator"></div>
   <div class="sub-header">பதிவு விண்ணப்பம்</div>
 
-  <!-- Top Fields in single row -->
-  <div class="top-fields">
-    <table>
-      <tr>
-        <td>பதிவு எண்</td>
-        <td><input type="text"></td>
-        <td>தோஷம்</td>
-        <td><input type="text"></td>
-        <td>தேதி</td>
-        <td><input type="date"></td>
-      </tr>
-    </table>
-  </div>
+  <!-- Top Fields -->
+<div class="top-fields">
+  <table>
+    <tr>
+      <td>பதிவு எண்</td>
+      <td>
+        <div class="input-wrapper">
+          <input type="text" id="regno">
+          <button type="button" class="voice-btn" onclick="startVoice('regno')">🎤</button>
+        </div>
+      </td>
+      <td>தோஷம்</td>
+      <td>
+        <div class="input-wrapper">
+          <input type="text" id="dosham">
+          <button type="button" class="voice-btn" onclick="startVoice('dosham')">🎤</button>
+        </div>
+      </td>
+      <td>தேதி</td>
+      <td>
+        <div class="input-wrapper">
+          <input type="date" id="date">
+          <button type="button" class="voice-btn" onclick="startVoice('date')">🎤</button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
 
   <div class="container">
     <!-- Form Section -->
     <div class="form-section">
       <table class="form-table">
-        <tr><td>பெயர்</td><td><input type="text"></td></tr>
-		<tr><td>குலம்</td><td><input type="text"></td></tr>
-		<tr><td>பிறந்த தேதி</td><td><input type="text"></td></tr>
-        <tr><td>பிறந்த நேரம்</td><td><input type="text"></td></tr>
-		<tr><td>நட்சத்திரம்</td><td><input type="text"></td></tr>
-		<tr><td>ராசி</td><td><input type="text"></td></tr>
-		<tr><td>லக்னம்</td><td><input type="text"></td></tr>
-		<tr><td>கல்வி</td><td><input type="text"></td></tr>
-        <tr><td>வேலை/தொழில்</td><td><input type="text"></td></tr>
-        <tr><td>மாத வருமானம்</td><td><input type="text"></td></tr>
-		<tr><td>உடன்பிறந்தவர்கள்</td><td><input type="text"></td></tr>
-        <tr><td>தந்தை பெயர்</td><td><input type="text"></td></tr>
-        <tr><td>தாயார் பெயர்</td><td><input type="text"></td></tr>
-		<tr><td>சொத்து விவரம்</td><td><input type="text"></td></tr>
-		<tr><td>தொலைபேசி எண்</td><td><input type="text"></td></tr>
-        <tr><td>இடம்</td><td><input type="text"></td></tr>   
+        <tr><td>பெயர்</td><td><input id="name"><button class="voice-btn" onclick="startVoice('name')">🎤</button></td></tr>
+        <tr><td>குலம்</td><td><input id="kulam"><button class="voice-btn" onclick="startVoice('kulam')">🎤</button></td></tr>
+        <tr><td>பிறந்த தேதி</td><td><input id="dob"><button class="voice-btn" onclick="startVoice('dob')">🎤</button></td></tr>
+        <tr><td>பிறந்த நேரம்</td><td><input id="time"><button class="voice-btn" onclick="startVoice('time')">🎤</button></td></tr>
+        <tr><td>நட்சத்திரம்</td><td><input id="nakshatra"><button class="voice-btn" onclick="startVoice('nakshatra')">🎤</button></td></tr>
+        <tr><td>ராசி</td><td><input id="raasi"><button class="voice-btn" onclick="startVoice('raasi')">🎤</button></td></tr>
+        <tr><td>லக்னம்</td><td><input id="lagna"><button class="voice-btn" onclick="startVoice('lagna')">🎤</button></td></tr>
+        <tr><td>கல்வி</td><td><input id="education"><button class="voice-btn" onclick="startVoice('education')">🎤</button></td></tr>
+        <tr><td>வேலை/தொழில்</td><td><input id="job"><button class="voice-btn" onclick="startVoice('job')">🎤</button></td></tr>
+        <tr><td>மாத வருமானம்</td><td><input id="income"><button class="voice-btn" onclick="startVoice('income')">🎤</button></td></tr>
+        <tr><td>உடன்பிறந்தவர்கள்</td><td><input id="siblings"><button class="voice-btn" onclick="startVoice('siblings')">🎤</button></td></tr>
+        <tr><td>தந்தை பெயர்</td><td><input id="father"><button class="voice-btn" onclick="startVoice('father')">🎤</button></td></tr>
+        <tr><td>தாயார் பெயர்</td><td><input id="mother"><button class="voice-btn" onclick="startVoice('mother')">🎤</button></td></tr>
+        <tr><td>சொத்து விவரம்</td><td><input id="property"><button class="voice-btn" onclick="startVoice('property')">🎤</button></td></tr>
+        <tr><td>தொலைபேசி எண்</td><td><input id="phone"><button class="voice-btn" onclick="startVoice('phone')">🎤</button></td></tr>
+        <tr><td>இடம்</td><td><input id="location"><button class="voice-btn" onclick="startVoice('location')">🎤</button></td></tr>
       </table>
     </div>
 
     <!-- Horoscope Section -->
     <div class="side-section">
       <div class="chart-wrapper">
-        <div class="chart" aria-label="ராசி chart">
-          <div class="cell cell-a"><input></div>
-          <div class="cell cell-b"><input></div>
-          <div class="cell cell-c"><input></div>
-          <div class="cell cell-d"><input></div>
-          <div class="cell cell-l"><input></div>
-          <div class="cell cell-e"><input></div>
-          <div class="cell cell-k"><input></div>
-          <div class="cell cell-f"><input></div>
-          <div class="cell cell-j"><input></div>
-          <div class="cell cell-i"><input></div>
-          <div class="cell cell-h"><input></div>
-          <div class="cell cell-g"><input></div>
+        <div class="chart">
+          <div class="cell"><input id="r1a"><button class="voice-btn" onclick="startVoice('r1a')">🎤</button></div>
+          <div class="cell"><input id="r1b"><button class="voice-btn" onclick="startVoice('r1b')">🎤</button></div>
+          <div class="cell"><input id="r1c"><button class="voice-btn" onclick="startVoice('r1c')">🎤</button></div>
+          <div class="cell"><input id="r1d"><button class="voice-btn" onclick="startVoice('r1d')">🎤</button></div>
+          <div class="cell"><input id="r1l"><button class="voice-btn" onclick="startVoice('r1l')">🎤</button></div>
+          <div class="cell"><input id="r1e"><button class="voice-btn" onclick="startVoice('r1e')">🎤</button></div>
+          <div class="cell"><input id="r1k"><button class="voice-btn" onclick="startVoice('r1k')">🎤</button></div>
+          <div class="cell"><input id="r1f"><button class="voice-btn" onclick="startVoice('r1f')">🎤</button></div>
+          <div class="cell"><input id="r1j"><button class="voice-btn" onclick="startVoice('r1j')">🎤</button></div>
+          <div class="cell"><input id="r1i"><button class="voice-btn" onclick="startVoice('r1i')">🎤</button></div>
+          <div class="cell"><input id="r1h"><button class="voice-btn" onclick="startVoice('r1h')">🎤</button></div>
+          <div class="cell"><input id="r1g"><button class="voice-btn" onclick="startVoice('r1g')">🎤</button></div>
           <div class="center">ராசி</div>
         </div>
       </div>
+
       <div class="chart-wrapper">
-        <div class="chart" aria-label="நவாம்சம் chart">
-          <div class="cell cell-a"><input></div>
-          <div class="cell cell-b"><input></div>
-          <div class="cell cell-c"><input></div>
-          <div class="cell cell-d"><input></div>
-          <div class="cell cell-l"><input></div>
-          <div class="cell cell-e"><input></div>
-          <div class="cell cell-k"><input></div>
-          <div class="cell cell-f"><input></div>
-          <div class="cell cell-j"><input></div>
-          <div class="cell cell-i"><input></div>
-          <div class="cell cell-h"><input></div>
-          <div class="cell cell-g"><input></div>
+        <div class="chart">
+          <div class="cell"><input id="n1a"><button class="voice-btn" onclick="startVoice('n1a')">🎤</button></div>
+          <div class="cell"><input id="n1b"><button class="voice-btn" onclick="startVoice('n1b')">🎤</button></div>
+          <div class="cell"><input id="n1c"><button class="voice-btn" onclick="startVoice('n1c')">🎤</button></div>
+          <div class="cell"><input id="n1d"><button class="voice-btn" onclick="startVoice('n1d')">🎤</button></div>
+          <div class="cell"><input id="n1l"><button class="voice-btn" onclick="startVoice('n1l')">🎤</button></div>
+          <div class="cell"><input id="n1e"><button class="voice-btn" onclick="startVoice('n1e')">🎤</button></div>
+          <div class="cell"><input id="n1k"><button class="voice-btn" onclick="startVoice('n1k')">🎤</button></div>
+          <div class="cell"><input id="n1f"><button class="voice-btn" onclick="startVoice('n1f')">🎤</button></div>
+          <div class="cell"><input id="n1j"><button class="voice-btn" onclick="startVoice('n1j')">🎤</button></div>
+          <div class="cell"><input id="n1i"><button class="voice-btn" onclick="startVoice('n1i')">🎤</button></div>
+          <div class="cell"><input id="n1h"><button class="voice-btn" onclick="startVoice('n1h')">🎤</button></div>
+          <div class="cell"><input id="n1g"><button class="voice-btn" onclick="startVoice('n1g')">🎤</button></div>
           <div class="center">நவாம்சம்</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="footer">
-    பதிவு கட்டணம்: ரூ.1000 (6 மாதத்திற்கே மட்டும்) பின்னர் புதுப்பிக்கவும்
-  </div>
-
+  <div class="footer">பதிவு கட்டணம்: ரூ.1000 (6 மாதத்திற்கே மட்டும்) பின்னர் புதுப்பிக்கவும்</div>
   <button class="print-btn" onclick="window.print()">🖨️ PDF அச்சிடு</button>
 </div>
+
+<script>
+function startVoice(fieldId) {
+  if (!('webkitSpeechRecognition' in window)) {
+    alert("உங்கள் உலாவியில் Voice Recognition ஆதரவு இல்லை!");
+    return;
+  }
+  const input = document.getElementById(fieldId);
+  const recognition = new webkitSpeechRecognition();
+  recognition.lang = "ta-IN";
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  recognition.onresult = function(event) {
+    input.value = event.results[0][0].transcript;
+  };
+  recognition.onerror = function(event) {
+    alert("குரல் பிழை: " + event.error);
+  };
+  recognition.start();
+}
+</script>
+
 </body>
 </html>
