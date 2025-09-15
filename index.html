@@ -172,7 +172,7 @@
                     <td>தேதி</td>
                     <td>
                         <div class="input-wrapper">
-                            <input type="date" id="date">
+                            <input  type="text" id="date">
                             <button type="button" class="voice-btn" onclick="startVoice('date')">🎤</button>
                         </div>
                     </td>
@@ -361,7 +361,7 @@
             </div>
         </div>
         <div class="footer">பதிவு கட்டணம்: ரூ.1000 (6 மாதத்திற்கே மட்டும்) பின்னர் புதுப்பிக்கவும்</div>
-        <button class="print-btn" onclick="window.print()">🖨️ PDF அச்சிடு</button>
+        <!-- <button class="print-btn" onclick="window.print()">🖨️ PDF அச்சிடு</button>-->
 		<button class="print-btn" onclick="downloadJPG()">📷 Export as JPG</button>
     </div>
 	<!-- Place this just before </body> -->
@@ -534,16 +534,31 @@ function toggleKeyboard() {
 function downloadJPG() {
   const page = document.querySelector('.page');
   
-  // Select things to hide
-  const hideElems = document.querySelectorAll(
-    '.print-btn, .voice-btn, select, .rasSel'
-  );
+  // Elements to hide (buttons, selectors, labels)
+  const hideElems = document.querySelectorAll('.print-btn, .voice-btn, select, .rasSel');
+
+  // Replace textareas with div clones
+  const textareas = page.querySelectorAll('textarea');
+  const clones = [];
+  textareas.forEach((ta, i) => {
+    const div = document.createElement('div');
+    div.style.cssText = getComputedStyle(ta).cssText;
+    div.style.whiteSpace = "pre-wrap";   // respect line breaks
+    div.style.overflow = "visible";      // no scrollbars
+    div.style.height = ta.offsetHeight + "px";
+    div.style.width = ta.offsetWidth + "px";
+    div.innerText = ta.value;
+
+    ta.style.display = "none";
+    ta.parentNode.insertBefore(div, ta);
+    clones.push({ ta, div });
+  });
 
   // Hide unwanted elements
   hideElems.forEach(el => el.style.display = 'none');
 
   // Add decorative border
-  page.style.border = "8px double #d4a017";  // golden
+  page.style.border = "8px double #d4a017";
   page.style.padding = "12px";
 
   html2canvas(page, { scale: 2 }).then(canvas => {
@@ -554,10 +569,15 @@ function downloadJPG() {
 
     // Restore hidden elements
     hideElems.forEach(el => el.style.display = '');
+    clones.forEach(({ ta, div }) => {
+      div.remove();
+      ta.style.display = '';
+    });
     page.style.border = ""; 
     page.style.padding = "";
   });
 }
+
     </script>
 </body>
 
