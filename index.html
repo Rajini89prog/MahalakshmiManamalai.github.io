@@ -70,23 +70,21 @@
     color: red;
     font-weight: bold;
   }
-    /* Raasi & Navamsam text boxes */
-  .raasi-box textarea, .navamsam-box textarea {
+ .raasi .cell textarea,
+  .navamsam .cell textarea {
     width: 90%;
     height: 40px;
     resize: none;
-    font-family: 'Latha', 'Nirmala UI', sans-serif;
+    font-family: 'Latha', 'Nirmala UI', sans-serif !important;
     font-size: 13px !important;
     text-align: center;
     line-height: 1.2;
   }
 
-  /* Other form inputs */
-  .form-input {
+  /* 🔹 Other text inputs in form */
+  input[type="text"], textarea {
+    font-size: 16px;
     font-family: 'Latha', 'Nirmala UI', sans-serif;
-    font-size: 16px !important;
-    width: 200px;
-    margin: 5px;
   }
   .keyboard {
   position: fixed;
@@ -387,12 +385,32 @@
   </div>
 </div>
     <script>
-        function startVoice(fieldId) { if (!('webkitSpeechRecognition' in window)) { alert("உங்கள் உலாவியில் Voice Recognition ஆதரவு இல்லை!"); return; } const input = document.getElementById(fieldId); const recognition = new webkitSpeechRecognition(); recognition.lang = "ta-IN"; recognition.interimResults = false; recognition.maxAlternatives = 1; recognition.onresult = function(event) { input.value = event.results[0][0].transcript; const box = document.getElementById(id);
+        function startVoice(fieldId) { if (!('webkitSpeechRecognition' in window)) { alert("உங்கள் உலாவியில் Voice Recognition ஆதரவு இல்லை!"); return; } const input = document.getElementById(fieldId); const recognition = new webkitSpeechRecognition(); recognition.lang = "ta-IN"; recognition.interimResults = false; recognition.maxAlternatives = 1; recognition.onresult = function(event) {         const box = document.getElementById(fieldId);
         box.value += event.results[0][0].transcript;
-        box.style.fontSize = "16px"; }; recognition.onerror = function(event) { alert("குரல் பிழை: " + event.error); }; recognition.start(); }
-		function startVoiceRaasi(fieldId) { if (!('webkitSpeechRecognition' in window)) { alert("உங்கள் உலாவியில் Voice Recognition ஆதரவு இல்லை!"); return; } const input = document.getElementById(fieldId); const recognition = new webkitSpeechRecognition(); recognition.lang = "ta-IN"; recognition.interimResults = false; recognition.maxAlternatives = 1; recognition.onresult = function(event) { input.value = event.results[0][0].transcript; const box = document.getElementById(id);
+        // 🔹 Enforce 13px if inside Raasi/Navamsam
+          box.style.fontSize = "16px";
+          box.style.fontFamily = "'Latha','Nirmala UI',sans-serif";}; recognition.onerror = function(event) { alert("குரல் பிழை: " + event.error); }; recognition.start(); }
+
+		  function startVoiceRaasi(fieldId) {
+    if ('webkitSpeechRecognition' in window) {
+      const recognition = new webkitSpeechRecognition();
+      recognition.lang = 'ta-IN';
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.onresult = function(event) {
+        const box = document.getElementById(fieldId);
         box.value += event.results[0][0].transcript;
-        box.style.fontSize = "13px"; }; recognition.onerror = function(event) { alert("குரல் பிழை: " + event.error); }; recognition.start(); }
+        // 🔹 Enforce 13px if inside Raasi/Navamsam
+          box.style.fontSize = "12px";
+          box.style.fontFamily = "'Latha','Nirmala UI',sans-serif";
+      };
+
+      recognition.start();
+    } else {
+      alert("Speech Recognition not supported in this browser.");
+    }
+  }
 		function markLagna(value, chartType) {
   // clear old lagna marks
   document.querySelectorAll("#" + chartType + "Chart .cell").forEach(cell => {
