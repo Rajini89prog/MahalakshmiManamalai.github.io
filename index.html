@@ -123,6 +123,18 @@
 .keyboard.collapsed .keyboard-keys {
   display: none;
 }
+.temple-header {
+  font-family: 'Latha','Nirmala UI',sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #b22222;
+  background-color: #ffe7b3;
+  padding: 10px;
+  margin: 15px 0;
+  border: 3px double #b8860b; /* golden double border */
+  border-radius: 12px;
+}
     </style>
 </head>
 
@@ -134,7 +146,8 @@
             <p>செல்: +91 95008 90278</p>
         </div>
         <div class="separator"></div>
-        <div class="sub-header">பதிவு விண்ணப்பம்</div>
+        <!-- <div class="sub-header">பதிவு விண்ணப்பம்</div>-->
+		<div class="temple-header">🌸 பதிவு விண்ணப்பம் 🌸</div>
         <!-- Top Fields -->
         <div class="top-fields">
             <table>
@@ -247,21 +260,21 @@
                     <tr>
                         <td>தந்தை பெயர்</td>
                         <td>
-                            <input id="father">
+                            <textarea id="father" row="2"></textarea>
                             <button class="voice-btn" onclick="startVoice('father')">🎤</button>
                         </td>
                     </tr>
                     <tr>
                         <td>தாயார் பெயர்</td>
                         <td>
-                            <input id="mother">
+                            <textarea id="mother" row="2"></textarea>
                             <button class="voice-btn" onclick="startVoice('mother')">🎤</button>
                         </td>
                     </tr>
                     <tr>
                         <td>சொத்து விவரம்</td>
                         <td>
-                            <input id="property">
+                            <textarea id="property" row="2"></textarea>
                             <button class="voice-btn" onclick="startVoice('property')">🎤</button>
                         </td>
                     </tr>
@@ -297,18 +310,18 @@
     </select>
   </div>
   <div class="chart" id="raasiChart">
-    <div class="cell" id="raasi1"><textarea id="r1a"></textarea><button class="voice-btn" onclick="startVoiceRaasi('r1a')">🎤</button></div>
-    <div class="cell" id="raasi2"><textarea id="r1b"></textarea><button class="voice-btn" onclick="startVoiceRaasi('r1b')">🎤</button></div>
-    <div class="cell" id="raasi3"><textarea id="r1c"></textarea><button class="voice-btn" onclick="startVoiceRaasi('r1c')">🎤</button></div>
-    <div class="cell" id="raasi4"><textarea id="r1d"></textarea><button class="voice-btn" onclick="startVoiceRaasi('r1d')">🎤</button></div>
-    <div class="cell" id="raasi5"><textarea id="r1l"></textarea><button class="voice-btn" onclick="startVoiceRaasi('r1l')">🎤</button></div>
-    <div class="cell" id="raasi6"><textarea id="r1e"></textarea><button class="voice-btn" onclick="startVoiceRaasi('r1e')">🎤</button></div>
-    <div class="cell" id="raasi7"><textarea id="r1k"></textarea><button class="voice-btn" onclick="startVoiceRaasi('r1k')">🎤</button></div>
-    <div class="cell" id="raasi8"><textarea id="r1f"></textarea><button class="voice-btn" onclick="startVoiceRaasi('r1f')">🎤</button></div>
-    <div class="cell" id="raasi9"><textarea id="r1j"></textarea><button class="voice-btn" onclick="startVoiceRaasi('r1j')">🎤</button></div>
-    <div class="cell" id="raasi10"><textarea id="r1i"></textarea><button class="voice-btn" onclick="startVoiceRaasi('r1i')">🎤</button></div>
-    <div class="cell" id="raasi11"><textarea id="r1h"></textarea><button class="voice-btn" onclick="startVoiceRaasi('r1h')">🎤</button></div>
-    <div class="cell" id="raasi12"><textarea id="r1g"></textarea><button class="voice-btn" onclick="startVoiceRaasi('r1g')">🎤</button></div>
+    <div class="cell" id="raasi1"><textarea id="r1a"></textarea></div>
+    <div class="cell" id="raasi2"><textarea id="r1b"></textarea></div>
+    <div class="cell" id="raasi3"><textarea id="r1c"></textarea></div>
+    <div class="cell" id="raasi4"><textarea id="r1d"></textarea></div>
+    <div class="cell" id="raasi5"><textarea id="r1l"></textarea></div>
+    <div class="cell" id="raasi6"><textarea id="r1e"></textarea></div>
+    <div class="cell" id="raasi7"><textarea id="r1k"></textarea></div>
+    <div class="cell" id="raasi8"><textarea id="r1f"></textarea></div>
+    <div class="cell" id="raasi9"><textarea id="r1j"></textarea></div>
+    <div class="cell" id="raasi10"><textarea id="r1i"></textarea></div>
+    <div class="cell" id="raasi11"><textarea id="r1h"></textarea></div>
+    <div class="cell" id="raasi12"><textarea id="r1g"></textarea></div>
     <div class="center">ராசி</div>
   </div>
 </div>
@@ -327,18 +340,18 @@
     </select>
   </div>
   <div class="chart" id="navamsamChart">
-    <div class="cell" id="navamsam1"><textarea id="n1a"></textarea><button class="voice-btn" onclick="startVoiceRaasi('n1a')">🎤</button></div>
-    <div class="cell" id="navamsam2"><textarea id="n1b"></textarea><button class="voice-btn" onclick="startVoiceRaasi('n1b')">🎤</button></div>
-    <div class="cell" id="navamsam3"><textarea id="n1c"></textarea><button class="voice-btn" onclick="startVoiceRaasi('n1c')">🎤</button></div>
-    <div class="cell" id="navamsam4"><textarea id="n1d"></textarea><button class="voice-btn" onclick="startVoiceRaasi('n1d')">🎤</button></div>
-    <div class="cell" id="navamsam5"><textarea id="n1l"></textarea><button class="voice-btn" onclick="startVoiceRaasi('n1l')">🎤</button></div>
-    <div class="cell" id="navamsam6"><textarea id="n1e"></textarea><button class="voice-btn" onclick="startVoiceRaasi('n1e')">🎤</button></div>
-    <div class="cell" id="navamsam7"><textarea id="n1k"></textarea><button class="voice-btn" onclick="startVoiceRaasi('n1k')">🎤</button></div>
-    <div class="cell" id="navamsam8"><textarea id="n1f"></textarea><button class="voice-btn" onclick="startVoiceRaasi('n1f')">🎤</button></div>
-    <div class="cell" id="navamsam9"><textarea id="n1j"></textarea><button class="voice-btn" onclick="startVoiceRaasi('n1j')">🎤</button></div>
-    <div class="cell" id="navamsam10"><textarea id="n1i"></textarea><button class="voice-btn" onclick="startVoiceRaasi('n1i')">🎤</button></div>
-    <div class="cell" id="navamsam11"><textarea id="n1h"></textarea><button class="voice-btn" onclick="startVoiceRaasi('n1h')">🎤</button></div>
-    <div class="cell" id="navamsam12"><textarea id="n1g"></textarea><button class="voice-btn" onclick="startVoiceRaasi('n1g')">🎤</button></div>
+    <div class="cell" id="navamsam1"><textarea id="n1a"></textarea></div>
+    <div class="cell" id="navamsam2"><textarea id="n1b"></textarea></div>
+    <div class="cell" id="navamsam3"><textarea id="n1c"></textarea></div>
+    <div class="cell" id="navamsam4"><textarea id="n1d"></textarea></div>
+    <div class="cell" id="navamsam5"><textarea id="n1l"></textarea></div>
+    <div class="cell" id="navamsam6"><textarea id="n1e"></textarea></div>
+    <div class="cell" id="navamsam7"><textarea id="n1k"></textarea></div>
+    <div class="cell" id="navamsam8"><textarea id="n1f"></textarea></div>
+    <div class="cell" id="navamsam9"><textarea id="n1j"></textarea></div>
+    <div class="cell" id="navamsam10"><textarea id="n1i"></textarea></div>
+    <div class="cell" id="navamsam11"><textarea id="n1h"></textarea></div>
+    <div class="cell" id="navamsam12"><textarea id="n1g"></textarea></div>
     <div class="center">நவாம்சம்</div>
   </div>
 </div>
@@ -355,7 +368,7 @@
     <button onclick="toggleKeyboard()">▲</button>
   </div>
   <div class="keyboard-keys">
-    <button onclick="insertChar('அ')">அ</button>
+<button onclick="insertChar('அ')">அ</button>
     <button onclick="insertChar('ஆ')">ஆ</button>
     <button onclick="insertChar('இ')">இ</button>
     <button onclick="insertChar('ஈ')">ஈ</button>
@@ -367,50 +380,77 @@
     <button onclick="insertChar('ஒ')">ஒ</button>
     <button onclick="insertChar('ஓ')">ஓ</button>
     <button onclick="insertChar('ஔ')">ஔ</button>
+	<button onclick="insertChar('ஃ')">ஃ</button>
     <br>
     <button onclick="insertChar('க')">க</button>
     <button onclick="insertChar('ச')">ச</button>
     <button onclick="insertChar('ட')">ட</button>
     <button onclick="insertChar('த')">த</button>
     <button onclick="insertChar('ப')">ப</button>
-    <button onclick="insertChar('ர')">ர</button>
-    <button onclick="insertChar('ம')">ம</button>
+	<button onclick="insertChar('ற')">ற</button>
+	<button onclick="insertChar('ஞ')">ஞ</button>
+	<button onclick="insertChar('ண')">ண</button>
     <button onclick="insertChar('ந')">ந</button>
-    <button onclick="insertChar('ய')">ய</button>
-    <button onclick="insertChar('வ')">வ</button>
-    <button onclick="insertChar('ழ')">ழ</button>
-    <button onclick="insertChar('ள')">ள</button>
-    <button onclick="insertChar('ற')">ற</button>
-    <button onclick="insertChar('ன')">ன</button>
+	<button onclick="insertChar('ம')">ம</button>
+	<button onclick="insertChar('ன')">ன</button>
+	<button onclick="insertChar('ய')">ய</button>
+    <button onclick="insertChar('ர')">ர</button>
+	<button onclick="insertChar('ல')">ல</button>
+	<button onclick="insertChar('வ')">வ</button>
+	<button onclick="insertChar('ழ')">ழ</button>
+    <button onclick="insertChar('ள')">ள</button> 
+	<button onclick="insertChar('ஜ')">ஜ</button>
+    <button onclick="insertChar('ஷ')">ஷ</button>   
+	<br>
+	<!-- Vowel signs -->
+	<button onclick="insertChar('்')">்</button>
+	<button onclick="insertChar('ா')">ா</button>
+	<button onclick="insertChar('ி')">ி</button>
+	<button onclick="insertChar('ீ')">ீ</button>
+	<button onclick="insertChar('ு')">ு</button>
+	<button onclick="insertChar('ூ')">ூ</button>
+	<button onclick="insertChar('ெ')">ெ</button>
+	<button onclick="insertChar('ே')">ே</button>
+	<button onclick="insertChar('ை')">ை</button>
+	<button onclick="insertChar('ொ')">ொ</button>
+	<button onclick="insertChar('ோ')">ோ</button>
+	<button onclick="insertChar('ௌ')">ௌ</button>
   </div>
 </div>
     <script>
-        function startVoice(fieldId) { if (!('webkitSpeechRecognition' in window)) { alert("உங்கள் உலாவியில் Voice Recognition ஆதரவு இல்லை!"); return; } const input = document.getElementById(fieldId); const recognition = new webkitSpeechRecognition(); recognition.lang = "ta-IN"; recognition.interimResults = false; recognition.maxAlternatives = 1; recognition.onresult = function(event) {         const box = document.getElementById(fieldId);
-        box.value += event.results[0][0].transcript;
-        // 🔹 Enforce 13px if inside Raasi/Navamsam
-          box.style.fontSize = "16px";
-          box.style.fontFamily = "'Latha','Nirmala UI',sans-serif";}; recognition.onerror = function(event) { alert("குரல் பிழை: " + event.error); }; recognition.start(); }
+        function startVoice(fieldId) {
+  if ('webkitSpeechRecognition' in window) {
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'ta-IN';
+    recognition.continuous = false;
+    recognition.interimResults = false;
 
-		  function startVoiceRaasi(fieldId) {
-    if ('webkitSpeechRecognition' in window) {
-      const recognition = new webkitSpeechRecognition();
-      recognition.lang = 'ta-IN';
-      recognition.continuous = false;
-      recognition.interimResults = false;
+    recognition.onresult = function(event) {
+      let text = event.results[0][0].transcript;
 
-      recognition.onresult = function(event) {
-        const box = document.getElementById(fieldId);
-        box.value += event.results[0][0].transcript;
-        // 🔹 Enforce 13px if inside Raasi/Navamsam
-          box.style.fontSize = "12px";
-          box.style.fontFamily = "'Latha','Nirmala UI',sans-serif";
-      };
+      // Fix common Tamil mic errors
+      <!--text = text.replace(/ல/g, "ள்");-->
+      <!--text = text.replace(/ன/g, "ண்");-->
 
-      recognition.start();
-    } else {
-      alert("Speech Recognition not supported in this browser.");
-    }
+      const box = document.getElementById(fieldId);
+      if (box) {
+        box.value += text;
+        box.style.fontSize = "16px";
+        box.style.fontFamily = "'Latha','Nirmala UI',sans-serif";
+      }
+    };
+
+    recognition.onerror = function(e) {
+      console.error("Voice input error:", e.error);
+      alert("Mic error: " + e.error);
+    };
+
+    recognition.start();
+  } else {
+    alert("Speech Recognition not supported in this browser.");
   }
+}
+
 		function markLagna(value, chartType) {
   // clear old lagna marks
   document.querySelectorAll("#" + chartType + "Chart .cell").forEach(cell => {
