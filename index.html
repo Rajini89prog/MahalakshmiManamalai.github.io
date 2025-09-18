@@ -542,51 +542,65 @@ function toggleKeyboard() {
   document.getElementById("tamilKeyboard").classList.toggle("collapsed");
 }
 function downloadJPG() {
-  const page = document.querySelector('.page');
-  
-  // Elements to hide (buttons, selectors, labels)
-  const hideElems = document.querySelectorAll('.print-btn, .voice-btn, select, .rasSel');
+      const page = document.querySelector('.page');
+      const hideElems = document.querySelectorAll('.print-btn, .voice-btn, select, .rasSel');
+      const clones = [];
 
-  // Replace textareas with div clones
-  const textareas = page.querySelectorAll('textarea');
-  const clones = [];
-  textareas.forEach((ta, i) => {
-    const div = document.createElement('div');
-    div.style.cssText = getComputedStyle(ta).cssText;
-    div.style.whiteSpace = "pre-wrap";   // respect line breaks
-    div.style.overflow = "visible";      // no scrollbars
-    div.style.height = ta.offsetHeight + "px";
-    div.style.width = ta.offsetWidth + "px";
-    div.innerText = ta.value;
+      // Handle textareas (skip raasi/navamsam)
+      const textareas = page.querySelectorAll('textarea');
+      textareas.forEach(ta => {
+        if (ta.closest('.chart')) {
+          return; // skip grid boxes
+        }
+        const div = document.createElement('div');
+        div.style.cssText = getComputedStyle(ta).cssText;
+        div.style.whiteSpace = "pre-wrap";
+        div.style.overflow = "visible";
+        div.style.height = ta.offsetHeight + "px";
+        div.style.width = ta.offsetWidth + "px";
+        div.innerText = ta.value;
+        div.style.fontSize = "22px";
+        div.style.fontFamily = "'Latha', 'Nirmala UI', sans-serif";
+        ta.style.display = "none";
+		div.style.fontWeight = "normal";
+        ta.parentNode.insertBefore(div, ta);
+        clones.push({ ta, div });
+      });
 
-    ta.style.display = "none";
-    ta.parentNode.insertBefore(div, ta);
-    clones.push({ ta, div });
-  });
+      // Hide unwanted elements
+      hideElems.forEach(el => el.style.display = 'none');
 
-  // Hide unwanted elements
-  hideElems.forEach(el => el.style.display = 'none');
+      // Enlarge other inputs (skip raasi/navamsam textareas)
+      const labelElems = page.querySelectorAll('td, input');
+      labelElems.forEach(el => {
+        el.style.fontSize = "22px";
+        el.style.fontFamily = "'Latha', 'Nirmala UI', sans-serif";
 
-  // Add decorative border
-  page.style.border = "8px double #d4a017";
-  page.style.padding = "12px";
+      });
 
-  html2canvas(page, { scale: 2 }).then(canvas => {
-    const link = document.createElement('a');
-    link.download = "horoscope.jpg";
-    link.href = canvas.toDataURL("image/jpeg", 1.0);
-    link.click();
+      page.style.border = "8px double #d4a017";
+      page.style.padding = "12px";
 
-    // Restore hidden elements
-    hideElems.forEach(el => el.style.display = '');
-    clones.forEach(({ ta, div }) => {
-      div.remove();
-      ta.style.display = '';
-    });
-    page.style.border = ""; 
-    page.style.padding = "";
-  });
-}
+      html2canvas(page, { scale: 2 }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = "horoscope.jpg";
+        link.href = canvas.toDataURL("image/jpeg", 1.0);
+        link.click();
+
+        // Restore hidden elements
+        hideElems.forEach(el => el.style.display = '');
+        clones.forEach(({ ta, div }) => {
+          div.remove();
+          ta.style.display = '';
+        });
+        labelElems.forEach(el => {
+          el.style.fontSize = el.dataset.oldFont || "";
+          delete el.dataset.oldFont;
+        });
+        page.style.border = "";
+        page.style.padding = "";
+      });
+    }
 
 
     </script>
